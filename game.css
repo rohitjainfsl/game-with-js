@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#screen1{
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.screen{
+    height: 100vh;
+    display: flex;
+}
+#screen2, #screen3{display: none;}
+#screen2{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#screen2 img{
+    width: 100px;
+}
+#screen2  .images-container{
+    display: flex;
+}
+
+
+#screen3{
+    position: relative;
+}
+#screen3 img{
+    width: 40px;
+    position: absolute;
+}
