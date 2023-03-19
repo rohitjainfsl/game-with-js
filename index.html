@@ -36,18 +36,20 @@
       const screen1 = document.querySelector("#screen1");
       const screen2 = document.querySelector("#screen2");
       const screen3 = document.querySelector("#screen3");
-
       const start = document.querySelector("#screen1 a");
-      let x,y;
+      const timerSpan = document.querySelector(".timer span");
+      const scoreSpan = document.querySelector(".score span");
+      const images = document.querySelectorAll("#screen2 img");
+      let x, y;
+      let selectedImage = "";
+      let score = 0;
+      let timer = 0;
 
       start.onclick = (event) => {
         event.preventDefault();
         screen1.style.display = "none";
         screen2.style.display = "flex";
       };
-
-      const images = document.querySelectorAll("#screen2 img");
-      let selectedImage = "";
 
       for (let i = 0; i < images.length; i++) {
         images[i].onclick = () => {
@@ -59,25 +61,18 @@
         };
       }
 
-      const timerSpan = document.querySelector(".timer span");
-      const scoreSpan = document.querySelector(".score span");
-
       function letsPlay() {
-        let timer = 0;
-
         //Timer Interval
 
         //Timer Interval
         x = setInterval(() => {
           if (timer === 10) {
             clearInterval(x);
-            clearInterval(y);
-            
+
             //clear everything up
             const imagesDiv = document.querySelector("#screen3 .images");
             imagesDiv.innerHTML = "";
             alert("Time's up\n Your score is : " + score);
-
           } else {
             timerSpan.innerHTML = ++timer;
 
@@ -85,20 +80,24 @@
             y = setInterval(popPhoto, 600);
           }
         }, 1000);
-        
       }
 
       function popPhoto() {
-        const img = document.createElement("img");
-        img.setAttribute("src", selectedImage);
-        // img.src = selectedImage
+        if (timer === 10) {
+          clearInterval(y);
+          console.log("ho gya");
+        } else {
+          const img = document.createElement("img");
+          img.setAttribute("src", selectedImage);
+          // img.src = selectedImage
 
-        img.style.left = getRandomLeft();
-        img.style.top = getRandomTop();
+          img.style.left = getRandomLeft();
+          img.style.top = getRandomTop();
 
-        img.setAttribute("onclick", "removeImage(this)");
+          img.setAttribute("onclick", "removeImage(this)");
 
-        document.querySelector("#screen3 .images").append(img);
+          document.querySelector("#screen3 .images").append(img);
+        }
       }
 
       function getRandomLeft() {
@@ -108,8 +107,6 @@
       function getRandomTop() {
         return Math.random() * (window.innerHeight - 60) + "px";
       }
-
-      let score = 0;
 
       function removeImage(element) {
         element.remove();
