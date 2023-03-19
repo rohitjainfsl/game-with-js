@@ -11,15 +11,15 @@
     <div id="wrapper">
       <div id="screen1" class="screen">
         <h1>Let's play the game</h1>
-        <a href="">Start</a>
+        <a href="">Yes, take me in!!</a>
       </div>
 
       <div id="screen2" class="screen">
         <h1>Choose your avatar</h1>
         <div class="images-container">
-          <img src="game/chacha-chaudhary.png" alt="" />
-          <img src="game/nagraj.png" alt="" />
-          <img src="game/shaktimaan.png" alt="" />
+          <img src="images/chacha-chaudhary.png" alt="" />
+          <img src="images/nagraj.png" alt="" />
+          <img src="images/shaktimaan.png" alt="" />
         </div>
       </div>
 
@@ -63,48 +63,53 @@
 
       function letsPlay() {
         let timer = 0;
+
+        //Timer Interval
         let x = setInterval(() => {
           if (timer === 10) {
             clearInterval(x);
-            console.log("Time up");
+            
+            //clear everything up
+            const imagesDiv = document.querySelector("#screen3 .images");
+            imagesDiv.innerHTML = "";
+            alert("Time's up\n Your score is : " + score);
+
           } else {
             timerSpan.innerHTML = ++timer;
-            popPhoto();
+
+            //Image Pop Interval
+            setInterval(popPhoto, 600);
           }
         }, 1000);
       }
 
-      function popPhoto(){
-        const img = document.createElement("img") 
-        img.setAttribute("src", selectedImage)
+      function popPhoto() {
+        const img = document.createElement("img");
+        img.setAttribute("src", selectedImage);
         // img.src = selectedImage
 
-        img.style.left = getRandomLeft()
-        img.style.top = getRandomTop()
+        img.style.left = getRandomLeft();
+        img.style.top = getRandomTop();
 
-        img.setAttribute("onclick", "removeImage(this)")
+        img.setAttribute("onclick", "removeImage(this)");
 
-
-        document.querySelector("#screen3 .images").append(img)
+        document.querySelector("#screen3 .images").append(img);
       }
 
-      function getRandomLeft(){
-        return Math.random() * window.innerWidth + "px"
+      function getRandomLeft() {
+        return Math.random() * (window.innerWidth - 60) + "px";
       }
 
-      function getRandomTop(){
-        return Math.random() * window.innerHeight + "px"
+      function getRandomTop() {
+        return Math.random() * (window.innerHeight - 60) + "px";
       }
 
-      let score = 0
+      let score = 0;
 
-      function removeImage(element){
-        element.remove()
-        scoreSpan.innerHTML = ++score
+      function removeImage(element) {
+        element.remove();
+        scoreSpan.innerHTML = ++score;
       }
-      
-
-
     </script>
   </body>
 </html>

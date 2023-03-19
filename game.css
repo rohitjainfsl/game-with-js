@@ -1,36 +1,93 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-#screen1{
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+.screen {
+  height: 100vh;
+  display: flex;
 }
-.screen{
-    height: 100vh;
-    display: flex;
+#screen1 {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: #525252;
+  background: -webkit-linear-gradient(to right, #3d72b4, #525252);
+  background: linear-gradient(to right, #3d72b4, #525252);
 }
-#screen2, #screen3{display: none;}
-#screen2{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#screen1 h1 {
+  font-size: 4rem;
+  color: #fff;
+  margin-bottom: 1rem;
 }
-#screen2 img{
-    width: 100px;
+#screen1 a {
+  text-decoration: none;
+  display: inline-block;
+  background-color: #fff;
+  color: #000;
+  padding: 1rem 3rem;
+  border-radius: 20px;
+  font-weight: bold;
+  border: 2px solid #000;
+  transition: all 0.45s;
+  box-shadow: 1px 3px 1px 3px rgba(0, 0, 0, 0.4),
+    1px 3px 2px 3px rgb(0, 0, 0, 0.4);
 }
-#screen2  .images-container{
-    display: flex;
+#screen1 a:hover {
+  box-shadow: none;
+  transform: translate(1px, 3px);
+}
+#screen2,
+#screen3 {
+  display: none;
+}
+#screen2 {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#screen2 h1 {
+  margin-bottom: 1rem;
+}
+#screen2 .images-container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 600px;
+  width: 50vw;
+}
+#screen2 img {
+  width: 100px;
+  cursor: pointer;
 }
 
-
-#screen3{
-    position: relative;
+#screen3 {
+  position: relative;
+  flex-direction: column;
 }
-#screen3 img{
-    width: 40px;
-    position: absolute;
+#screen3 .head{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#screen3 img {
+  width: 40px;
+  position: absolute;
+}
+
+@media all and (max-width: 700px) {
+  #screen2 .images-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #screen2 img {
+    margin: 1rem;
+  }
+  #screen1 h1 {
+    font-size: 2rem;
+  }
 }
