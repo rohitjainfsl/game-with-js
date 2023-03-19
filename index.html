@@ -38,6 +38,7 @@
       const screen3 = document.querySelector("#screen3");
 
       const start = document.querySelector("#screen1 a");
+      let x,y;
 
       start.onclick = (event) => {
         event.preventDefault();
@@ -67,9 +68,10 @@
         //Timer Interval
 
         //Timer Interval
-        let x = setInterval(() => {
+        x = setInterval(() => {
           if (timer === 10) {
             clearInterval(x);
+            clearInterval(y);
             
             //clear everything up
             const imagesDiv = document.querySelector("#screen3 .images");
@@ -80,7 +82,7 @@
             timerSpan.innerHTML = ++timer;
 
             //Image Pop Interval
-            setInterval(popPhoto, 600);
+            y = setInterval(popPhoto, 600);
           }
         }, 1000);
         
